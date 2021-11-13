@@ -18,16 +18,20 @@ def biseccion(f, a, b, cota):
             return p
     return p
 
-def newtonRaphson(f,a,b,cota):
-    return 1
+def newtonRaphson(f,fprima,a,cota):
+    error = cota +1
+    xk = a
+    while error > cota:
+        xk2 = xk-f(xk)/fprima(xk)
+        error = abs(xk2-xk)
+        xk = xk2
+    return xk
 
 
-f = lambda x: math.pow(x, 3) - 3
 
-cotaInf = 1
-cotaSup = 2
+f = lambda x: x-1-0.5*math.sin(x)
+fprima = lambda x: 1-0.5*math.cos(x)
 
-print(biseccion(f, cotaInf, cotaSup, pow(10, -15)))
 
-print(f(cotaInf))
-print(f(cotaSup))
+print("newtonRaphson = "+ str(newtonRaphson(f, fprima,2, pow(10, -4))))
+
