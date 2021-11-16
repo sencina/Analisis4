@@ -35,6 +35,19 @@ def bk(listaX,listaY, k):
 
       return suma
 
+#calcula un el y dado un valor de x pasandole el a0, y un arreglo con los ak y oro con los bk
+def calculate(x, a0, cos_coeffs, sen_coeffs):
+    i = 1
+    sum = sum + a0
+    for coef in cos_coeffs:
+        sum = sum + coef * math.cos(i * x)
+        i = i + 1
+    i = 1
+    for coef in sen_coeffs:
+        sum = sum + coef * math.sin(i * x)
+        i = i + 1
+
+    return sum
 
 print(a0(listaY))
 print(ak(listaX,listaY,1))
