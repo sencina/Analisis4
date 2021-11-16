@@ -82,11 +82,24 @@ def eulerMejorado2(f, g, x0, y0, z0, b, n): #sistemas
     for i in range(n):
         F1 = h*f(x0,y0,z0)
         G1 = h*g(x0,y0,z0)
-        F2 = h*f(x0+1/2*h,y0+F1,z0+G1)
-        G2 = h*g(x0+1/2*h,y0+F1,z0+G1)
-        y1 = y0+1/2*(F1+F2)
+        F2 = h*f(x0+h,y0+F1,z0+G1)
+        G2 = h*g(x0+h,y0+F1,z0+G1)
+        y1 = y0+(1/2)*(F1+F2)
         z1 = z0 + (G1+G2)/2
         x0 = x0 + h
         y0 = y1
         z0 = z1
     return [x0,y0,z0]
+
+def f(x,y,z):
+    return z
+def g(x,y,z):
+    return x+2*y+z
+
+x0 = 0
+y0 = 2
+z0 = 1
+b = 1
+n = 2
+
+print(eulerMejorado2(f,g,x0,y0,z0,b,n))
